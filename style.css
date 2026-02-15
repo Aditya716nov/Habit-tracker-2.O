@@ -1,0 +1,702 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 32px;
+}
+
+.logo h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.5px;
+}
+
+.logo p {
+    font-size: 13px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.date-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    background: #f0f0f0;
+    border-color: #ccc;
+}
+
+#monthDisplay {
+    font-weight: 600;
+    color: #333;
+    min-width: 140px;
+    text-align: center;
+}
+
+.today-btn {
+    padding: 8px 16px;
+    border: 1px solid #10b981;
+    background: white;
+    color: #10b981;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.today-btn:hover {
+    background: #10b981;
+    color: white;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 20px;
+}
+
+@media (max-width: 1100px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Main Panel */
+.main-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Week Header */
+.week-header {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.week-title h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+.week-title span {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+    display: block;
+}
+
+.week-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.week-nav button {
+    padding: 8px 14px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.week-nav button:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+/* Habit Grid Card */
+.habit-grid-card {
+    background: white;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.grid-header {
+    display: grid;
+    grid-template-columns: 180px 1fr 80px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+    letter-spacing: 0.5px;
+}
+
+.habit-col {
+    padding-left: 8px;
+}
+
+.days-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    text-align: center;
+}
+
+.day-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.day-header .day-name {
+    font-size: 10px;
+    color: #888;
+}
+
+.day-header .day-num {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.day-header.today .day-num {
+    background: #10b981;
+    color: white;
+}
+
+.total-col {
+    text-align: center;
+}
+
+/* Grid Body */
+.grid-body {
+    padding: 8px 0;
+}
+
+.habit-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 80px;
+    padding: 10px 16px;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.habit-row:hover {
+    background: #fafafa;
+}
+
+.habit-row:last-child {
+    border-bottom: none;
+}
+
+.habit-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 8px;
+}
+
+.habit-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.habit-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.habit-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.day-checkbox {
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+}
+
+.checkbox:hover {
+    border-color: #10b981;
+}
+
+.checkbox.checked {
+    background: #10b981;
+    border-color: #10b981;
+}
+
+.checkbox.checked::after {
+    content: '✓';
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.habit-total {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+.habit-total.perfect {
+    color: #10b981;
+}
+
+/* Delete button */
+.delete-habit {
+    opacity: 0;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 8px;
+    padding: 4px;
+}
+
+.habit-row:hover .delete-habit {
+    opacity: 1;
+}
+
+.delete-habit:hover {
+    color: #ef4444;
+}
+
+/* Add Habit Row */
+.add-habit-row {
+    padding: 12px 16px;
+    border-top: 1px solid #e0e0e0;
+    background: #fafafa;
+}
+
+.add-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.add-form.hidden {
+    display: none;
+}
+
+.add-form input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.add-form input:focus {
+    border-color: #10b981;
+}
+
+.btn-add, .btn-cancel {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add {
+    background: #10b981;
+    color: white;
+}
+
+.btn-add:hover {
+    background: #059669;
+}
+
+.btn-cancel {
+    background: #e0e0e0;
+    color: #666;
+}
+
+.btn-cancel:hover {
+    background: #d0d0d0;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 12px;
+    border: 2px dashed #ddd;
+    background: white;
+    border-radius: 6px;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.add-btn:hover {
+    border-color: #10b981;
+    color: #10b981;
+    background: #f0fdf4;
+}
+
+/* Monthly Section */
+.monthly-section {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.monthly-section h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.month-header {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    padding: 8px 0;
+}
+
+.month-day {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #e0e0e0;
+    position: relative;
+}
+
+.month-day:hover {
+    border-color: #10b981;
+}
+
+.month-day .day-num {
+    font-weight: 600;
+    color: #333;
+}
+
+.month-day .day-progress {
+    font-size: 9px;
+    color: #888;
+    margin-top: 2px;
+}
+
+.month-day.today {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.month-day.today .day-num {
+    color: #10b981;
+}
+
+.month-day.completed {
+    background: #d1fae5;
+    border-color: #10b981;
+}
+
+.month-day.completed .day-num {
+    color: #059669;
+}
+
+.month-day.partial {
+    background: #ecfdf5;
+}
+
+.month-day.other-month {
+    opacity: 0.4;
+}
+
+/* Side Panel */
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.side-panel > div {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.side-panel h3 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #666;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+/* Chart Card */
+.chart-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 140px;
+    gap: 6px;
+}
+
+.chart-bar-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.chart-bar {
+    width: 100%;
+    max-width: 30px;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.chart-bar:hover {
+    opacity: 0.8;
+}
+
+.chart-label {
+    font-size: 10px;
+    color: #888;
+    font-weight: 500;
+}
+
+/* Stats Card */
+.stats-card .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.stats-card .stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #666;
+}
+
+.stat-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Top Habits */
+.top-habit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.top-habit-item:last-child {
+    border-bottom: none;
+}
+
+.top-habit-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.top-habit-name {
+    flex: 1;
+    font-size: 13px;
+    color: #333;
+}
+
+.top-habit-count {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+.top-habit-bar {
+    width: 50px;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.top-habit-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Summary Card */
+.summary-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.summary-header span {
+    font-size: 24px;
+}
+
+.summary-header h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.summary-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.habit-count {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 12px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .grid-header,
+    .habit-row {
+        grid-template-columns: 120px 1fr 60px;
+    }
+    
+    .habit-days {
+        gap: 4px;
+    }
+    
+    .checkbox {
+        width: 28px;
+        height: 28px;
+    }
+}
